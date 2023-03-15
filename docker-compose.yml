@@ -47,6 +47,6 @@ networks:
     driver: bridge
     name: cruddur
 
-  volumes:
+volumes:
   db:
     driver: local
