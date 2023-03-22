@@ -112,32 +112,23 @@ When creating a new dataset in Honeycomb it will provide all these installation 
 
 
 
-We'll add the following files to our `requirements.txt`
+I was able to add the following files to my `requirements.txt`
 
-```
-opentelemetry-api 
-opentelemetry-sdk 
-opentelemetry-exporter-otlp-proto-http 
-opentelemetry-instrumentation-flask 
-opentelemetry-instrumentation-requests
-```
 
-We'll install these dependencies:
+![Image 3-22-23 at 1 50 PM](https://user-images.githubusercontent.com/122316410/227035085-1dc61e65-f5bb-487f-a1b8-2e0121f30ee7.jpg)
+
+
+
+I successfully installed these dependencies:
 
 ```sh
 pip install -r requirements.txt
 ```
 
-Add to the `app.py`
+Then added to the `app.py`
 
-```py
-from opentelemetry import trace
-from opentelemetry.instrumentation.flask import FlaskInstrumentor
-from opentelemetry.instrumentation.requests import RequestsInstrumentor
-from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
-```
+
+![Image 3-22-23 at 1 55 PM](https://user-images.githubusercontent.com/122316410/227036057-3a6fac72-ea55-4e69-8ee2-39a910f4e0eb.jpg)
 
 
 ```py
@@ -148,6 +139,7 @@ provider.add_span_processor(processor)
 trace.set_tracer_provider(provider)
 tracer = trace.get_tracer(__name__)
 ```
+![Image 3-22-23 at 1 58 PM](https://user-images.githubusercontent.com/122316410/227036552-8c52ed8e-69e5-4179-b5e8-52ea3d327abd.jpg)
 
 ```py
 # Initialize automatic instrumentation with Flask
@@ -155,16 +147,20 @@ app = Flask(__name__)
 FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
 ```
+![Image 3-22-23 at 2 00 PM](https://user-images.githubusercontent.com/122316410/227036974-d48998e0-4000-45aa-b67d-11b6f12c9788.jpg)
 
-Add teh following Env Vars to `backend-flask` in docker compose
+I was able to add the following Env Vars to `backend-flask` in docker compose
 
 ```yml
 OTEL_EXPORTER_OTLP_ENDPOINT: "https://api.honeycomb.io"
 OTEL_EXPORTER_OTLP_HEADERS: "x-honeycomb-team=${HONEYCOMB_API_KEY}"
 OTEL_SERVICE_NAME: "${HONEYCOMB_SERVICE_NAME}"
 ```
+![Image 3-22-23 at 2 02 PM](https://user-images.githubusercontent.com/122316410/227037441-8c54f0c2-b6c3-4122-a395-bc0b2636905d.jpg)
+
 
 You'll need to grab the API key from your honeycomb account:
+I was able to add these variables:
 
 ```sh
 export HONEYCOMB_API_KEY=""
@@ -172,6 +168,8 @@ export HONEYCOMB_SERVICE_NAME="Cruddur"
 gp env HONEYCOMB_API_KEY=""
 gp env HONEYCOMB_SERVICE_NAME="Cruddur"
 ```
+![Image 3-22-23 at 2 07 PM](https://user-images.githubusercontent.com/122316410/227038437-62878d42-b817-4df7-ae14-40ae3c1c03f9.jpg)
+
 
 ## CloudWatch Logs
 
