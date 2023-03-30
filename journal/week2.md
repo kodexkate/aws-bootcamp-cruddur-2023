@@ -10,19 +10,20 @@ export AWS_REGION="ca-central-1"
 gp env AWS_REGION="ca-central-1"
 ```
 
-Add to the `requirements.txt`
+I was able to add to the `requirements.txt`
 
 ```py
 aws-xray-sdk
 ```
+![Image 3-29-23 at 4 56 PM](https://user-images.githubusercontent.com/122316410/228694053-01ff7729-b763-4148-a9b5-bf5e29adc825.jpg)
 
-Install pythonpendencies
+Then I installed pythonpendencies
 
 ```sh
 pip install -r requirements.txt
 ```
 
-Add to `app.py`
+Then added this code to `app.py`
 
 ```py
 from aws_xray_sdk.core import xray_recorder
@@ -32,10 +33,11 @@ xray_url = os.getenv("AWS_XRAY_URL")
 xray_recorder.configure(service='Cruddur', dynamic_naming=xray_url)
 XRayMiddleware(app, xray_recorder)
 ```
+![Image 3-29-23 at 5 06 PM](https://user-images.githubusercontent.com/122316410/228695135-834d6e70-1eb0-4f46-9981-a2404959ce2a.jpg)
 
 ### Setup AWS X-Ray Resources
 
-Add `aws/json/xray.json`
+I then set up x-ray resources by creating an x-ray json file, then adding this code  `aws/json/xray.json`
 
 ```json
 {
@@ -54,6 +56,7 @@ Add `aws/json/xray.json`
   }
 }
 ```
+![Image 3-29-23 at 5 13 PM](https://user-images.githubusercontent.com/122316410/228695855-7c0a0861-e7dd-43a4-a142-8aac6f6d783c.jpg)
 
 ```sh
 FLASK_ADDRESS="https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
