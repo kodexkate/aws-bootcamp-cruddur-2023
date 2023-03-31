@@ -31,14 +31,14 @@ import watchtower
 import logging
 from time import strftime
 
-# Configuring Logger to Use CloudWatch
-(logging.getLogger(__name__)).setLevel(logging.DEBUG)
+# Configuring Logger to Use CloudWatch ------------
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.DEBUG)
 console_handler = logging.StreamHandler()
 cw_handler = watchtower.CloudWatchLogHandler(log_group='cruddur')
-(logging.getLogger(__name__)).addHandler(console_handler)
-(logging.getLogger(__name__)).addHandler(cw_handler)
-(logging.getLogger(__name__)).info("test log")
-
+LOGGER.addHandler(console_handler)
+LOGGER.addHandler(cw_handler)
+LOGGER.info("test log")
 
 # HoneyComb ------------
 # Initialize tracing and an exporter that can send data to Honeycomb
@@ -123,7 +123,7 @@ def data_create_message():
 
 @app.route("/api/activities/home", methods=['GET'])
 def data_home():
-  data = HomeActivities.run(Logger=Logger) 
+  data = HomeActivities.run() 
   return data, 200
 
 @app.route("/api/activities/notifications", methods=['GET'])
