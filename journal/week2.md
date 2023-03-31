@@ -182,6 +182,7 @@ Add to the `requirements.txt`
 ```
 watchtower
 ```
+![Image 3-30-23 at 5 07 PM](https://user-images.githubusercontent.com/122316410/228991152-784e2f41-b309-420c-b351-ff0aae2110fc.jpg)
 
 ```sh
 pip install -r requirements.txt
@@ -195,6 +196,7 @@ import watchtower
 import logging
 from time import strftime
 ```
+![Image 3-30-23 at 5 12 PM](https://user-images.githubusercontent.com/122316410/228991584-9af639c6-90dd-4340-be15-2fc0eae5186a.jpg)
 
 ```py
 # Configuring Logger to Use CloudWatch
@@ -206,6 +208,7 @@ LOGGER.addHandler(console_handler)
 LOGGER.addHandler(cw_handler)
 LOGGER.info("some message")
 ```
+![Image 3-30-23 at 5 10 PM](https://user-images.githubusercontent.com/122316410/228991602-5b9d5f69-452a-4565-9698-47a76abb12fb.jpg)
 
 ```py
 @app.after_request
@@ -214,6 +217,7 @@ def after_request(response):
     LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
     return response
 ```
+![Image 3-30-23 at 5 24 PM](https://user-images.githubusercontent.com/122316410/228992826-74612d66-c14f-416d-8249-858db965b7b0.jpg)
 
 We'll log something in an API endpoint
 ```py
@@ -228,7 +232,8 @@ Set the env var in your backend-flask for `docker-compose.yml`
       AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
 ```
 
-> passing AWS_REGION doesn't seems to get picked up by boto3 so pass default region instead
+![Image 3-30-23 at 5 25 PM](https://user-images.githubusercontent.com/122316410/228993661-208dd007-1835-4955-b4df-a169accd9e9f.jpg)
+
 
 
 ## Rollbar
