@@ -83,7 +83,7 @@ cors = CORS(
 @app.after_request
 def after_request(response):
     timestamp = strftime('[%Y-%b-%d %H:%M]')
-    (logging.getLogger(__name__)).error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
+    LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
     return response
 
 @app.route("/api/message_groups", methods=['GET'])
