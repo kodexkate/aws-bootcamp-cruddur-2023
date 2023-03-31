@@ -94,6 +94,7 @@ aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
     ports:
       - 2000:2000/udp
 ```
+![Image 3-30-23 at 8 10 PM](https://user-images.githubusercontent.com/122316410/229013580-c3f8df66-db11-4ef1-b5ab-a39e88ff4eed.jpg)
 
 We need to add these two env vars to our backend-flask in our `docker-compose.yml` file
 
@@ -101,6 +102,7 @@ We need to add these two env vars to our backend-flask in our `docker-compose.ym
       AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
       AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
 ```
+![Image 3-30-23 at 8 15 PM](https://user-images.githubusercontent.com/122316410/229013916-0f3e3b96-deaf-450b-990e-20ecab0feac7.jpg)
 
 ### Check service data for last 10 minutes
 
@@ -279,6 +281,7 @@ import rollbar
 import rollbar.contrib.flask
 from flask import got_request_exception
 ```
+![Image 3-30-23 at 8 06 PM](https://user-images.githubusercontent.com/122316410/229012804-b642d6f5-8a53-4b49-8a31-190e46221130.jpg)
 
 ```py
 rollbar_access_token = os.getenv('ROLLBAR_ACCESS_TOKEN')
@@ -298,6 +301,7 @@ def init_rollbar():
     # send exceptions from `app` to rollbar, using flask's signal system.
     got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
 ```
+![Image 3-30-23 at 8 07 PM](https://user-images.githubusercontent.com/122316410/229012898-7d8617df-df93-4e0d-9fd4-35a277c705e3.jpg)
 
 We'll add an endpoint just for testing rollbar to `app.py`
 
@@ -307,6 +311,7 @@ def rollbar_test():
     rollbar.report_message('Hello World!', 'warning')
     return "Hello World!"
 ```
+![Image 3-30-23 at 8 08 PM](https://user-images.githubusercontent.com/122316410/229013005-e2265d64-a9a9-418e-a0cb-5e9115a4a7a4.jpg)
 
 
 [Rollbar Flask Example](https://github.com/rollbar/rollbar-flask-example/blob/master/hello.py)
