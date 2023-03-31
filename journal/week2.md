@@ -94,6 +94,7 @@ aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
     ports:
       - 2000:2000/udp
 ```
+![Image 3-30-23 at 8 10 PM](https://user-images.githubusercontent.com/122316410/229013580-c3f8df66-db11-4ef1-b5ab-a39e88ff4eed.jpg)
 
 We need to add these two env vars to our backend-flask in our `docker-compose.yml` file
 
@@ -101,6 +102,7 @@ We need to add these two env vars to our backend-flask in our `docker-compose.ym
       AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
       AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
 ```
+![Image 3-30-23 at 8 15 PM](https://user-images.githubusercontent.com/122316410/229013916-0f3e3b96-deaf-450b-990e-20ecab0feac7.jpg)
 
 ### Check service data for last 10 minutes
 
