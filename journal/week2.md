@@ -249,6 +249,7 @@ Add to `requirements.txt`
 blinker
 rollbar
 ```
+![Image 3-30-23 at 7 20 PM](https://user-images.githubusercontent.com/122316410/229007567-7c499d7a-20eb-4ae2-8a29-78321b70b427.jpg)
 
 Install deps
 
@@ -262,12 +263,14 @@ We need to set our access token
 export ROLLBAR_ACCESS_TOKEN=""
 gp env ROLLBAR_ACCESS_TOKEN=""
 ```
+![Image 3-30-23 at 7 34 PM](https://user-images.githubusercontent.com/122316410/229008514-083f93d8-ed61-4a62-8c49-78f7c73e4e71.jpg)
 
 Add to backend-flask for `docker-compose.yml`
 
 ```yml
 ROLLBAR_ACCESS_TOKEN: "${ROLLBAR_ACCESS_TOKEN}"
 ```
+![Image 3-30-23 at 7 39 PM](https://user-images.githubusercontent.com/122316410/229009217-d4f75677-7260-4638-a964-660a27d119bb.jpg)
 
 Import for Rollbar
 
