@@ -2,6 +2,7 @@ from flask import Flask
 from flask import request
 from flask_cors import CORS, cross_origin
 import os
+import sys
 
 from services.home_activities import *
 from services.notifications_activities import *
@@ -153,6 +154,10 @@ def data_create_message():
 
 @app.route("/api/activities/home", methods=['GET'])
 def data_home():
+  print('AUTH HEADER----', flush=True)
+  print(
+  request.headers.get('Authorization')
+  )
   data = HomeActivities.run() 
   return data, 200
 
