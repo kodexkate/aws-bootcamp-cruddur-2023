@@ -346,6 +346,8 @@ const onsubmit = async (event) => {
 
 ## Recovery Page
 
+I was able to receive the password reset email as well as reset my password and log back in. 
+
 ```js
 import { Auth } from 'aws-amplify';
 
