@@ -14,7 +14,7 @@ from services.messages import *
 from services.create_message import *
 from services.show_activity import *
 
-from lib.cognito_jwt_token import CognitoJwtToken
+from lib.cognito_jwt_token import CognitoJwtToken, extract_access_token, TokenVerifyError
 
 # HoneyComb ----------
 from opentelemetry import trace
@@ -32,9 +32,9 @@ from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
 # CloudWatch logs ----
 import watchtower
 import logging
-from time import strftime
 
 #Rollbar
+from time import strftime
 import os
 import rollbar
 import rollbar.contrib.flask
@@ -71,9 +71,9 @@ app = Flask(__name__)
 
 
 cognito_jwt_token = CognitoJwtToken(
-  user_pool_id=os.getenv(AWS_COGNITO_USER_POOL_ID),
-  user_pool_client_id=os.getenv(AWS_COGNITO_USER_POOL_CLIENT_ID), 
-  region=os.getenv(AWS_DEFAULT_REGION),
+  user_pool_id=os.getenv("AWS_COGNITO_USER_POOL_ID"),
+  user_pool_client_id=os.getenv("AWS_COGNITO_USER_POOL_CLIENT_ID"), 
+  region=os.getenv("AWS_DEFAULT_REGION"),
 )
 
 # X-RAY ---------
@@ -163,20 +163,19 @@ def data_create_message():
 
 @app.route("/api/activities/home", methods=['GET'])
 def data_home():
- access_token = CognitoJwtToken.extract_access_token(request.headers)
+ access_token = extract_access_token(request.headers)
  try:
-     claims = cognito_jwt_token.token_service.verify(access_token)
-     self.claims = self.token_service.claims
-     g.cognito_claims = self.claims
+     claims = cognito_jwt_token.verify(access_token)
+     # authenticated request 
+     app.logger.debug("authenticated")
+     app.logger.debug(claims)
+     app.logger.debug(claims['username'])
+     data = HomeActivities.run(cognito_user_id=claims['username'])
  except TokenVerifyError as e:
-    _ = request.data
-    abort(make_response(jsonify(message=str(e)), 401))
-
- app.logger.debug('claims')
- app.logger.debug(claims)
-
- data = HomeActivities.run() 
-
+     # unauthenticated request
+     app.logger.debug(e)
+     app.logger.debug("unauthenticated")
+     data = HomeActivities.run() 
  return data, 200
 
 @app.route("/api/activities/notifications", methods=['GET'])
