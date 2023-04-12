@@ -441,6 +441,10 @@ export PROD_CONNECTION_URL="postgresql://root:huEE33z2Qvl383@cruddur-db-instance
 gp env PROD_CONNECTION_URL="postgresql://root:huEE33z2Qvl383@cruddur-db-instance.czz1cuvepklc.ca-central-1.rds.amazonaws.com:5432/cruddur"
 ```
 
+
+![Image 4-11-23 at 8 11 PM](https://user-images.githubusercontent.com/122316410/231338779-2693147d-a87a-423e-bf2b-54b54ac27c15.jpg)
+
+
 ## Update Bash scripts for production
 
 ```sh
