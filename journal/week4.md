@@ -75,6 +75,7 @@ The command to import:
 ```
 psql cruddur < db/schema.sql -h localhost -U postgres
 ```
+![Image 4-11-23 at 12 23 PM](https://user-images.githubusercontent.com/122316410/231267728-33d96cb6-8f1d-4472-95de-dfddb74d24a7.jpg)
 
 
 ## Add UUID Extension
