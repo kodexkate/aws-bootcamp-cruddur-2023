@@ -164,6 +164,9 @@ export CONNECTION_URL="postgresql://postgres:pssword@127.0.0.1:5433/cruddur"
 gp env CONNECTION_URL="postgresql://postgres:pssword@127.0.0.1:5433/cruddur"
 ```
 
+![Image 4-12-23 at 5 08 PM](https://user-images.githubusercontent.com/122316410/231612568-17979c00-bfd9-40a8-a741-48a8df6202b3.jpg)
+
+
 We'll create a new bash script `bin/db-connect`
 
 ```sh
@@ -196,6 +199,9 @@ psql $NO_DB_CONNECTION_URL -c "DROP database cruddur;"
 
 https://askubuntu.com/questions/595269/use-sed-on-a-string-variable-rather-than-a-file
 
+![Image 4-12-23 at 5 21 PM](https://user-images.githubusercontent.com/122316410/231614008-67a47d91-6d53-4f93-b752-9fa28f554c9e.jpg)
+
+
 ## See what connections we are using
 
 ```sh
@@ -208,8 +214,17 @@ psql $NO_DB_CONNECTION_URL -c "select pid as process_id, \
        state \
 from pg_stat_activity;"
 ```
+![Image 4-12-23 at 5 25 PM](https://user-images.githubusercontent.com/122316410/231614444-930788dc-7a72-402c-a04b-750f1700e69c.jpg)
+
+![Image 4-12-23 at 5 43 PM](https://user-images.githubusercontent.com/122316410/231616385-e2d5785c-331a-4557-886d-4fa8df6ac9c0.jpg)
+
 
 > We could have idle connections left open by our Database Explorer extension, try disconnecting and checking again the sessions 
+
+I was able to successfully drop the database after editing the URL:
+
+![Image 4-12-23 at 6 13 PM](https://user-images.githubusercontent.com/122316410/231620163-ce805644-290c-4095-9694-59ed61e174fc.jpg)
+
 
 ## Shell script to create the database
 
@@ -221,6 +236,11 @@ from pg_stat_activity;"
 NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
 createdb cruddur $NO_DB_CONNECTION_URL
 ```
+I was able to create the database after editing the URL:
+
+
+![Image 4-12-23 at 6 15 PM](https://user-images.githubusercontent.com/122316410/231620305-be075694-4fde-43d6-bf92-95a7c5b7d83d.jpg)
+
 
 ## Shell script to load the schema
 
@@ -236,6 +256,11 @@ echo $schema_path
 NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
 psql $NO_DB_CONNECTION_URL cruddur < $schema_path
 ```
+I was able to create this extension: 
+
+
+![Image 4-12-23 at 6 28 PM](https://user-images.githubusercontent.com/122316410/231622179-dc3e5725-550e-41a9-96d9-ec8c85ac467d.jpg)
+
 
 ## Shell script to load the seed data
 
