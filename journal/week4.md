@@ -121,6 +121,13 @@ CREATE TABLE public.activities (
 DROP TABLE IF EXISTS public.users;
 DROP TABLE IF EXISTS public.activities;
 ```
+I was able to create these tables:
+
+![Image 4-13-23 at 3 47 PM](https://user-images.githubusercontent.com/122316410/231899238-a44e9d32-aae5-4553-8df2-67684915a3c1.jpg)
+
+![Image 4-13-23 at 3 52 PM](https://user-images.githubusercontent.com/122316410/231900042-16b34fdb-0119-40ab-babe-ee04ebe760a7.jpg)
+
+
 
 # https://aviyadav231.medium.com/automatically-updating-a-timestamp-column-in-postgresql-using-triggers-98766e3b47a0
 
