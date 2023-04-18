@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta, timezone
 from opentelemetry import trace
 
+from lib.db import db
+
 tracer = trace.get_tracer("home.activies")
 
 class HomeActivities:
@@ -10,6 +12,18 @@ class HomeActivities:
       span = trace.get_current_span()
       now = datetime.now(timezone.utc).astimezone()
       span.set_attribute("app.now", now.isoformat())
+
+      sql = """
+      SELECT * FROM activities
+      """
+    with pool.connection() as conn:
+        with conn.cursor() as cur:
+          cur.execute(sql)
+          # this will return a tuple
+          # the first field being the data
+          json = cur.fetchone()
+    return json[0]
+
 
     results = [{
       'uuid': '68f126b0-1ceb-4a33-88be-d90fa7109eee',
