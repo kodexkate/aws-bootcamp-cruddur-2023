@@ -432,6 +432,9 @@ In order to connect to the RDS instance we need to provide our Gitpod IP and whi
 GITPOD_IP=$(curl ifconfig.me)
 ```
 
+![Image 4-19-23 at 1 04 PM](https://user-images.githubusercontent.com/122316410/233188041-7bb5df7d-5c85-41bd-a0e0-023ba1e616d3.jpg)
+
+
 We'll create an inbound rule for Postgres (5432) and provide the GITPOD ID.
 
 We'll get the security group rule id so we can easily modify it in the future from the terminal here in Gitpod.
@@ -442,6 +445,8 @@ gp env DB_SG_ID="sg-0b725ebab7e25635e"
 export DB_SG_RULE_ID="sgr-070061bba156cfa88"
 gp env DB_SG_RULE_ID="sgr-070061bba156cfa88"
 ```
+![Image 4-19-23 at 1 08 PM](https://user-images.githubusercontent.com/122316410/233188238-186166c4-fd0f-4c38-9b34-046e32d3f2da.jpg)
+
 
 Whenever we need to update our security groups we can do this for access.
 ```sh
@@ -449,6 +454,7 @@ aws ec2 modify-security-group-rules \
     --group-id $DB_SG_ID \
     --security-group-rules "SecurityGroupRuleId=$DB_SG_RULE_ID,SecurityGroupRule={IpProtocol=tcp,FromPort=5432,ToPort=5432,CidrIpv4=$GITPOD_IP/32}"
 ```
+
 
 https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-security-group-rules.html#examples
 
@@ -500,6 +506,7 @@ We'll add a command step for postgres:
       export GITPOD_IP=$(curl ifconfig.me)
       source "$THEIA_WORKSPACE_ROOT/backend-flask/db-update-sg-rule"
 ```
+![Image 4-19-23 at 1 04 PM](https://user-images.githubusercontent.com/122316410/233188744-a7ade93e-de1a-459f-a263-54b58c186f3f.jpg)
 
 
 ## Setup Cognito post confirmation lambda
@@ -507,7 +514,16 @@ We'll add a command step for postgres:
 ### Create the handler function
 
 - Create lambda in same vpc as rds instance Python 3.8
+
+![Image 4-19-23 at 1 32 PM](https://user-images.githubusercontent.com/122316410/233193359-7d9b6938-7e8e-4f6e-bb45-ac8c6a0dcdc9.jpg)
+
+![Image 4-19-23 at 2 27 PM](https://user-images.githubusercontent.com/122316410/233204051-66adeb54-cc5e-4cd5-b1ee-d323291b202b.jpg)
+
+
 - Add a layer for psycopg2 with one of the below methods for development or production 
+
+![Image 4-19-23 at 2 56 PM](https://user-images.githubusercontent.com/122316410/233209015-41806728-c594-4bef-89fb-84aad0db48d8.jpg)
+
 
 ENV variables needed for the lambda environment.
 ```
@@ -516,6 +532,9 @@ PG_DATABASE='cruddur'
 PG_USERNAME='root'
 PG_PASSWORD='huEE33z2Qvl383'
 ```
+
+![Image 4-19-23 at 2 33 PM](https://user-images.githubusercontent.com/122316410/233205129-b9c96b57-9f7e-4d93-8b5e-1f28e7a4bb9f.jpg)
+
 
 The function
 
@@ -547,6 +566,10 @@ def lambda_handler(event, context):
 
     return event
 ```
+
+![Image 4-19-23 at 2 27 PM](https://user-images.githubusercontent.com/122316410/233205188-de6c3c8a-435a-47ab-8344-c472b3c76992.jpg)
+
+
 
 ### Development
 https://github.com/AbhimanyuHK/aws-psycopg2
