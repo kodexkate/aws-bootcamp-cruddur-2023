@@ -13,14 +13,19 @@ def lambda_handler(event, context):
     user_cognito_id    = user['sub']
     try:
       print('entered-try')
-      sql = f"""
+      sql =f"""
          INSERT INTO public.users (
           display_name, 
           email,
           handle, 
           cognito_user_id
           ) 
-        VALUES(%s,%s,%s,%s)
+        VALUES( 
+          '{user_display_name}',
+          '{user_email}',
+          '{user_handle}',
+          '{user_cognito_id}'
+          )"
       """
       print('SQL Statement ----')
       print(sql)
@@ -32,7 +37,7 @@ def lambda_handler(event, context):
         user_handle,
         user_cognito_id
       ]
-      cur.execute(sql,*params)
+      cur.execute(sql,params)
       conn.commit() 
 
     except (Exception, psycopg2.DatabaseError) as error:
