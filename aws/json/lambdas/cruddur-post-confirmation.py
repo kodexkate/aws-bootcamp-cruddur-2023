@@ -25,7 +25,7 @@ def lambda_handler(event, context):
           '{user_email}',
           '{user_handle}',
           '{user_cognito_id}'
-          )"
+          )
       """
       print('SQL Statement ----')
       print(sql)
