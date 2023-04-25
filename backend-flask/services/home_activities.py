@@ -12,6 +12,6 @@ class HomeActivities:
     #  span = trace.get_current_span()
     #  now = datetime.now(timezone.utc).astimezone()
     #  span.set_attribute("app.now", now.isoformat())
-    sql = db.template('activities','home')
+    sql = db.template('home')
     results = db.query_array_json(sql)
     return results
