@@ -608,3 +608,8 @@ Under the user pool properties add the function as a `Post Confirmation` lambda 
 
 ![Image 4-19-23 at 9 23 PM](https://user-images.githubusercontent.com/122316410/233257686-ef592eb1-d074-42ec-8823-f614ccb329e2.jpg)
 
+
+![Image 4-24-23 at 7 55 PM](https://user-images.githubusercontent.com/122316410/234163264-c87c4685-aa89-4a4b-a71b-f875cff2eca9.jpg)
+
+
+
