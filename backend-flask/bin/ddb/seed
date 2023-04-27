@@ -38,15 +38,15 @@ def get_user_uuids():
     'my_handle':  'Kate',
     'other_handle': 'Kate'
   })
-my_user    = next((item for item in users if item["handle"] == 'Kate'), None)
-other_user = next((item for item in users if item["handle"] == 'Kate'), None)
-results = {
+ my_user    = next((item for item in users if item["handle"] == 'Kate'), None)
+ other_user = next((item for item in users if item["handle"] == 'Kate'), None)
+ results = {
     'my_user': my_user,
     'other_user': other_user
   }
-print('get_user_uuids')
-print(results)
-return results
+ print('get_user_uuids')
+ print(results)
+ return results
 
 
 def create_message_group(client,message_group_uuid, my_user_uuid, last_message_at=None, message=None, other_user_uuid=None, other_user_display_name=None, other_user_handle=None):
