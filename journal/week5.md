@@ -4,7 +4,7 @@
 ## DynamoDB Bash Scripts
 
 ```sh
-./bin/ddb/schem-load
+./bin/ddb/schema-load
 ```
 
 
