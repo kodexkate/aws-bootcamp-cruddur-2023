@@ -22,6 +22,9 @@ tasks:
      command: |
       export GITPOD_IP=$(curl ifconfig.me)
       source  "$THEIA_WORKSPACE_ROOT/backend-flask/rds/update-sg-rule"
+      -  name: Install boto3
+      command: pip3 install boto3
+
 vscode:
   extensions:
     - 42Crunch.vscode-openapi
