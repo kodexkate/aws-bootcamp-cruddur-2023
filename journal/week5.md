@@ -7,6 +7,7 @@
 ./bin/ddb/schema-load
 ```
 
+I was able to implement setup, schema-load, seed, and scan successfully.
 
 ## The Boundaries of DynamoDB
 
