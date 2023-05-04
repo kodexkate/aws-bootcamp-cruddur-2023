@@ -89,6 +89,7 @@ class Db:
       with conn.cursor() as cur:
         cur.execute(sql,params)
         json = cur.fetchone()
+        return json[0]
 
   def query_wrap_object(self,template):
     sql = f"""
@@ -97,9 +98,8 @@ class Db:
     ) object_row);
     """
     return sql
-
-    def query_wrap_array(self,template):
-     sql = f"""
+  def query_wrap_array(self,template):
+    sql = f"""
     (SELECT COALESCE(array_to_json(array_agg(row_to_json(array_row))),'[]'::json) FROM (
     {template}
     ) array_row);
@@ -118,7 +118,7 @@ class Db:
     print ("psycopg traceback:", traceback, "-- type:", err_type)
 
     # print the pgcode and pgerror exceptions
-    print ("pgerror:", err.pgerror)
-    print ("pgcode:", err.pgcode, "\n")
+    #print ("pgerror:", err.pgerror)
+    #print ("pgcode:", err.pgcode, "\n")
 
 db = Db()
