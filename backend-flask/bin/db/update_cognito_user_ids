@@ -9,14 +9,15 @@ print("== db-update-cognito-user-ids")
 current_path = os.path.dirname(os.path.abspath(__file__))
 parent_path = os.path.abspath(os.path.join(current_path, '..', '..'))
 sys.path.append(parent_path)
+
 from lib.db import db
 
 def update_users_with_cognito_user_id(handle,sub):
   sql = """
-     UPDATE public.user
+     UPDATE public.users
      SET cognito_user_id = %(sub)s
      WHERE
-     users.handle = %(handle)s;
+       users.handle = %(handle)s;
   """
   db.query_commit(sql,{
     'handle' : handle,

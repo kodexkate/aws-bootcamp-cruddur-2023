@@ -14,8 +14,8 @@ class Db:
 
     template_path = os.path.join(*pathing)
 
-    green = '\ 033[92m'
-    no_color = '\ 033[0m'
+    green = '\033[92m'
+    no_color = '\033[0m'
     print("\n")
     print(f'{green} Load SQL Template: {template_path} {no_color}')
 
@@ -29,8 +29,8 @@ class Db:
   # we want to commit data such as an insert
   # be sure to check for RETURNING in all uppercases
   def print_params(self,params):
-    blue = '\ 033[94m'
-    no_color = '\ 033[0m'
+    blue = '\033[94m'
+    no_color = '\033[0m'
     print(f'{blue} SQL Params:{no_color}')
     for key, value in params.items():
       print(key, ":", value)
@@ -82,7 +82,6 @@ class Db:
           "{}"
         else:
           return json[0]
-
   def query_value(self,sql,params={}):
     self.print_sql('value',sql,params)
     with self.pool.connection() as conn:
@@ -90,7 +89,6 @@ class Db:
         cur.execute(sql,params)
         json = cur.fetchone()
         return json[0]
-
   def query_wrap_object(self,template):
     sql = f"""
     (SELECT COALESCE(row_to_json(object_row),'{{}}'::json) FROM (
@@ -105,7 +103,6 @@ class Db:
     ) array_row);
     """
     return sql
-
   def print_sql_err(self,err):
     # get details about the exception
     err_type, err_obj, traceback = sys.exc_info()
@@ -118,7 +115,7 @@ class Db:
     print ("psycopg traceback:", traceback, "-- type:", err_type)
 
     # print the pgcode and pgerror exceptions
-    #print ("pgerror:", err.pgerror)
-    #print ("pgcode:", err.pgcode, "\n")
+    print ("pgerror:", err.pgerror)
+    print ("pgcode:", err.pgcode, "\n")
 
 db = Db()
