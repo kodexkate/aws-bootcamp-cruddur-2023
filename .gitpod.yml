@@ -28,8 +28,6 @@ tasks:
          cd frontend-react-js
          npm i
            
-  
-
    - name: flask
      command: |
       cd backend-flask
