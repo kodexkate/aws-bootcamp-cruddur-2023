@@ -1,6 +1,6 @@
 # Week 5 — DynamoDB and Serverless Caching
 
-## DynamoDB Bash Scripts for this week
+## DynamoDB shell commands for this week
 
    [`schema-load`]: this creates a table in my `dynamodb-local db`
    
