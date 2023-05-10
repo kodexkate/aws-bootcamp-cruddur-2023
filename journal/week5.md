@@ -2,21 +2,21 @@
 
 ## DynamoDB shell commands for this week
 
-   [`schema-load`]: this creates a table in my `dynamodb-local db`
+   `schema-load`: this creates a table in my `dynamodb-local db`
    
-   [`list-tables`]: after loading my schema, I wrote a script to list my tables
+   `list-tables`: after loading my schema, I wrote a script to list my tables
    
-   [`seed`]: add items to ddb table
+   `seed`: add items to ddb table
    
-   [`drop`]: successfully deletes a ddb table when you provide the file name
+   `drop`: successfully deletes a ddb table when you provide the file name
    
-   [`scan`]: to scan (_return all items in table_) the ddb table
+   `scan`: to scan (_return all items in table_) the ddb table
    
-   [`get-conversations`]: will show user's conversations
+   `get-conversations`: will show user's conversations
    
-   [`list-conversations`]: shows user's conversation
+   `list-conversations`: shows user's conversation
    
-   [`update-cognito-user-ids`]: uses the AWS SDK, boto3 to interact with Cognito and obtains the user's `UUID` then updates the user's table with that info.
+   `update-cognito-user-ids`: uses the AWS SDK, boto3 to interact with Cognito and obtains the user's `UUID` then updates the user's table with that info.
 
 
 ## **Data Modelling a Direct Messaging System using Single Table Design**
