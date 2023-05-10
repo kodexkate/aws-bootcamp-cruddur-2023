@@ -32,7 +32,7 @@
 
 
 
-A temp fix for the token error causing the app not to display any messages is due to the message token. I added the this line for the header to the [`MessageGroupsPage.js`], [`MessageGroupPage.js`], and the [`MessageForm.js`]
+**A temp fix for the token error causing the app not to display any messages is due to the message token. I added the this line for the header to the [`MessageGroupsPage.js`], [`MessageGroupPage.js`], and the [`MessageForm.js`]**
 
 ```js
 headers: {
@@ -111,21 +111,21 @@ Updated `frontend-react-js/src/components/MessageForm.js`
 
 ## Provisioning DynamoDB tables with Provisioned Capacity
 
-I identified the table's required read and write capacity and set the provisioned capacity accordingly. I monitored the table's capacity usage and adjusted it as needed to maintain optimal performance. Provisioning capacity enabled me to ensure that the table could handle the required traffic and maintain low latency.
+**I identified the table's required read and write capacity and set the provisioned capacity accordingly. I monitored the table's capacity usage and adjusted it as needed to maintain optimal performance. Provisioning capacity enabled me to ensure that the table could handle the required traffic and maintain low latency.**
 
 
 ## Utilizing a Global Secondary Index (GSI) with DynamoDB
 
-I identified the table's access patterns and created a GSI that would enable me to query the data efficiently based on specific attributes. I configured the GSI to include the required attributes and provisioned read and write capacity to handle the expected traffic. I then tested the GSI by running queries and verified that the results were correct. The GSI allowed me to access the data quickly and reduced the complexity of the query process.
+**I identified the table's access patterns and created a GSI that would enable me to query the data efficiently based on specific attributes. I configured the GSI to include the required attributes and provisioned read and write capacity to handle the expected traffic. I then tested the GSI by running queries and verified that the results were correct. The GSI allowed me to access the data quickly and reduced the complexity of the query process.**
 
 ## Rapid data modelling and implementation of DynamoDB with DynamoDB Local
 
- I identified the required data entities, their relationships, and defined their attributes. I then designed a single table schema that would enable me to store and retrieve the data efficiently. I used DynamoDB Local to create a local development environment, which allowed me to test the data model and implementation without incurring any costs. I inserted sample data and ran queries to verify that data was stored and retrieved correctly. 
+ **I identified the required data entities, their relationships, and defined their attributes. I then designed a single table schema that would enable me to store and retrieve the data efficiently. I used DynamoDB Local to create a local development environment, which allowed me to test the data model and implementation without incurring any costs. I inserted sample data and ran queries to verify that data was stored and retrieved correctly.**
 
 
 ## Writing utility scripts to easily setup and teardown and debug DynamoDB data
 
-I identified the required scripts, including scripts to create tables, insert sample data, query data, and delete tables. I used the AWS SDK to interact with DynamoDB and implemented error handling and logging to aid in debugging. The utility scripts allowed me to automate the setup and teardown process and enabled me to easily test and debug the data model and implementation. 
+**I identified the required scripts, including scripts to create tables, insert sample data, query data, and delete tables. I used the AWS SDK to interact with DynamoDB and implemented error handling and logging to aid in debugging. The utility scripts allowed me to automate the setup and teardown process and enabled me to easily test and debug the data model and implementation.**
 
 
 
