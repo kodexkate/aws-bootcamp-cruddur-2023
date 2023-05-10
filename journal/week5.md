@@ -19,23 +19,29 @@
    [`update-cognito-user-ids`]: uses the AWS SDK, boto3 to interact with Cognito and obtains the user's `UUID` then updates the user's table with that info.
 
 
-## Data Modelling a Direct Messaging System using Single Table Design
+## **Data Modelling a Direct Messaging System using Single Table Design**
 
-I identified the necessary data entities, determined their relationships, defined their attributes, and designed a single table schema. I normalized the data to ensure data integrity and tested the model by inserting sample data and running queries to verify that data was stored and retrieved correctly.
+**I identified the necessary data entities, determined their relationships, defined their attributes, and designed a single table schema. I normalized the data to ensure data integrity and tested the model by inserting sample data and running queries to verify that data was stored and retrieved correctly. I changed the usernames to the ones in both of my Cruddur accounts and changing these caused quite a bit of confusion! I had to change the preferred usernames via AWS and this allowed me to not get the accounts mixed up.** 
 
 ![Image 5-9-23 at 4 45 PM](https://github.com/kodexkate/aws-bootcamp-cruddur-2023/assets/122316410/d5693adf-58f9-4bfa-881f-5179c93de780)
 
-Even after running ./bin/db/update_cognito_user_ids the cognito user id was not updating, so it remained to display 'MOCK'. I couldn't figure out why this was not updating,so I decides to return to this issue later. 
+**Even after running ./bin/db/update_cognito_user_ids the cognito user id was not updating, so it remained to display 'MOCK'. I couldn't figure out why this was not updating,so I decides to return to this issue later.**
 
 
 ![Image 5-9-23 at 5 09 PM](https://github.com/kodexkate/aws-bootcamp-cruddur-2023/assets/122316410/b70a623f-af4f-4678-8d05-2ab74afa9e2d)
 
+**I was finally able to see data on the homepage without any issues.**
+
+
+![Image 5-9-23 at 5 35 PM](https://github.com/kodexkate/aws-bootcamp-cruddur-2023/assets/122316410/4847158d-f808-4b54-9da0-dc02a6db593e)
+
+![Image 5-9-23 at 4 57 PM](https://github.com/kodexkate/aws-bootcamp-cruddur-2023/assets/122316410/e498071c-1d8f-4fd1-bf4a-851cd9dd4b05)
 
 ## Implementing DynamoDB query using Single Table Design
 
-I identified the required data entities, determined the relationships, defined their attributes, designed a single table schema, created indexes, and implemented the query using the DynamoDB API. The single table design simplified the data structure and made it easier to manage indexes, resulting in improved query performance. 
+**I identified the required data entities, determined the relationships, defined their attributes, designed a single table schema, created indexes, and implemented the query using the DynamoDB API. The single table design simplified the data structure and made it easier to manage indexes, resulting in improved query performance.** 
 
-- I replaced codes in;
+- **I replaced codes in;**
 
 `backend-flask/app.py` (mainly, instead of using `"/api/messages/@<string:handle>"`, use `"/api/messages/<string:message_group_uuid>"`)
 
@@ -44,7 +50,7 @@ I identified the required data entities, determined the relationships, defined t
 `backend-flask/services/messages.py`
 
 
-- I created and changed codes in;
+**I created and changed codes in;**
 
 Created `backend-flask/db/sql/users/uuid_from_cognito_user_id.sql`
 
@@ -55,7 +61,7 @@ Changed path from `"/messages/@:handle"` to `"/messages/:message_group_uuid"` in
 Change `params.handle` to `params.message_group_uuid` and `props.message_group.handle` to `props.message_group.uuid` in `frontend-react-js/src/components/MessageGroupItem.js`
 
 
-For this week I updated the code to the frontend file:
+**For this week I updated the code to the frontend file:**
 
 created `frontend-react-js/src/lib/CheckAuth.js` 
 
@@ -111,12 +117,6 @@ I identified the table's access patterns and created a GSI that would enable me 
 I identified the required scripts, including scripts to create tables, insert sample data, query data, and delete tables. I used the AWS SDK to interact with DynamoDB and implemented error handling and logging to aid in debugging. The utility scripts allowed me to automate the setup and teardown process and enabled me to easily test and debug the data model and implementation. 
 
 
-I was finally able to see data on the homepage without any issues
-
-
-![Image 5-9-23 at 5 35 PM](https://github.com/kodexkate/aws-bootcamp-cruddur-2023/assets/122316410/4847158d-f808-4b54-9da0-dc02a6db593e)
-
-![Image 5-9-23 at 4 57 PM](https://github.com/kodexkate/aws-bootcamp-cruddur-2023/assets/122316410/e498071c-1d8f-4fd1-bf4a-851cd9dd4b05)
 
 
 
