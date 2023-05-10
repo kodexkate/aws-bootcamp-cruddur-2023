@@ -30,6 +30,17 @@
 
 ![Image 5-9-23 at 5 09 PM](https://github.com/kodexkate/aws-bootcamp-cruddur-2023/assets/122316410/b70a623f-af4f-4678-8d05-2ab74afa9e2d)
 
+
+
+A temp fix for the token error causing the app not to display any messages is due to the message token. I added the this line for the header to the [`MessageGroupsPage.js`], [`MessageGroupPage.js`], and the [`MessageForm.js`]
+
+```js
+headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`
+        }
+```
+
+
 **I was finally able to see data on the homepage without any issues.**
 
 
