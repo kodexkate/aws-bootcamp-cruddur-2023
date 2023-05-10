@@ -1,37 +1,21 @@
 # Week 5 — DynamoDB and Serverless Caching
 
-I was able to implement setup, schema-load, seed, Pattern Scripts for Read and List Conversations, and scan successfully.
+I focused on data modelling a direct messaging system using a single table design.
+Here are the steps I took:
 
-## Data Modelling a Direct Messaging System using Single Table Design
---Research and study the principles of data modelling and single table design in DynamoDB
---Plan and design a data model for a direct messaging system using a single table design
---Create the table in DynamoDB based on the design
+1. Identified the data entities: I started by identifying the data entities that are needed for a direct messaging system. These entities include users, messages, and conversations.
+2. Determined the relationships between entities: I then determined the relationships between these entities. For instance, a user can send and receive messages, and a message can belong to a conversation.
+3. Defined the attributes for each entity: After determining the relationships, I defined the attributes for each entity. For users, attributes may include username, password, and email address. For messages, attributes may include the message content, timestamp, and sender/receiver IDs. For conversations, attributes may include conversation ID, participants, and message IDs.
+4. Designed a single table schema: Instead of creating separate tables for each entity, I designed a single table schema that includes all the entities and their respective attributes. This schema would eliminate the need for complicated joins across multiple tables.
+5. Normalized the data: To ensure data integrity and consistency, I normalized the data by removing any redundant or duplicate data. I ensured that each column in the table represents a single data element.
+6. Tested the data model: Finally, I tested the data model by inserting sample data and running queries to ensure that the data is being stored and retrieved correctly.
 
-
-## Implementing DynamoDB query using Single Table Design
---Write queries in DynamoDB to retrieve and update data from the single table
---Test the queries and optimize their performance
-
-## Provisioning DynamoDB tables with Provisioned Capacity
---Determine the amount of provisioned capacity needed for the table based on expected usage patterns and performance requirements
---Provision capacity for the table in DynamoDB console
---Monitor the table's capacity usage and adjust as necessary to ensure optimal performance
-
-## Utilizing a Global Secondary Index (GSI) with DynamoDB
---Research and study the principles of GSI in DynamoDB
---Create a Global Secondary Index for the table
---Use the GSI to retrieve data in a query
-
-## Rapid data modelling and implementation of DynamoDB with DynamoDB Local
---Install and set up DynamoDB Local 
---Develop and test applications using DynamoDB Local
---Quickly create and modify tables and data using DynamoDB Local
-
-## Writing utility scripts to easily setup and teardown and debug DynamoDB data
---Research and study scripting languages and techniques for DynamoDB
---Write utility scripts to automate the setup and teardown of DynamoDB tables and data
---Use scripts to populate tables with sample data for testing and debugging purposes
---Debug issues with table setup or data manipulation using scripts.
+``` 
+![Image 5-7-23 at 4 41 PM](https://github.com/kodexkate/aws-bootcamp-cruddur-2023/assets/122316410/ae085e5a-f213-4366-9817-151a38fcd59c)
+``` 
 
 
+``` 
+![Image 5-9-23 at 12 37 PM](https://github.com/kodexkate/aws-bootcamp-cruddur-2023/assets/122316410/51ba6792-44b2-4141-863e-7304265d8000)
 
+```
