@@ -64,7 +64,7 @@ const checkAuth = async () => {
     dataFetchedRef.current = true;
 
     loadData();
-    checkAuth();
+    checkAuth(setUser);
   }, [])
 
   return (
