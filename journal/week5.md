@@ -108,6 +108,15 @@ Updated `frontend-react-js/src/components/MessageGroupFeed.js`
 
 Updated `frontend-react-js/src/components/MessageForm.js`
 
+Updated `list-conversations` and `get-conversation`
+
+Updated `ddb.py` 
+
+**I was having issues with loading the Messages page, but when viewing the frontend logs I couldn't figure out what the issue was, so I inspected the page and found that `set user` was not defined in my `MessageGroupsPage.js`. I updated this file and the Messages page finally loaded!**
+
+
+![Image 5-11-23 at 11 20 AM](https://github.com/kodexkate/aws-bootcamp-cruddur-2023/assets/122316410/147123e2-f91d-4b53-97d7-0ebd207572d2)
+
 
 ## Provisioning DynamoDB tables with Provisioned Capacity
 
